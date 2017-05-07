@@ -1,4 +1,4 @@
-package casseBrique;
+package com.mkempf.brickbuster;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,9 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Menue extends JPanel implements ActionListener{
+public class Menu extends JPanel implements ActionListener{
 	
-	public Menue(JFrame jf){
+	public Menu(JFrame jf){
 		
 		JButton boutonGO = new JButton("GO");
 		boutonGO.setFocusable(false);

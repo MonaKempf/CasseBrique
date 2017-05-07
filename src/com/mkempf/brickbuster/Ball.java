@@ -1,19 +1,19 @@
-package casseBrique;
+package com.mkempf.brickbuster;
 
 import javax.swing.JPanel;
 
-public class Balle {
-	Position positionBalle = new Position(Fenetre.WEIGHT/2, Fenetre.HEIGHT - 80);
+public class Ball {
+	Position positionBalle = new Position(Window.WEIGHT/2, Window.HEIGHT - 80);
 	private int x;
 	private int y;
 	private int[] vecteurDirection = new int[2];
 	private JPanel jp;
 	
 	
-	public Balle(JPanel jp){
+	public Ball(JPanel jp){
 		this.jp=jp;
-		this.x = positionBalle.getPositionX();
-		this.y = positionBalle.getPositionY();
+		this.x = positionBalle.getX();
+		this.y = positionBalle.getY();
 		this.vecteurDirection [0] = 0;
 		this.vecteurDirection [1] = 2;
 //		run();

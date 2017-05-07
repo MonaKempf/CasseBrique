@@ -1,17 +1,17 @@
-package casseBrique;
+package com.mkempf.brickbuster;
 import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
-public class Fenetre extends JFrame {
+public class Window extends JFrame {
 	
 	public final static int WEIGHT = 1200;
 	public final static int HEIGHT = 500;
 	
 	
-	public Fenetre(){
+	public Window(){
 		super();
 		
 		this.setTitle("Le Casse Brique ");
@@ -23,9 +23,9 @@ public class Fenetre extends JFrame {
 
 
 	public static void main(String[] args) {
-		JFrame fenetre = new Fenetre();
-		Menue menue = new Menue(fenetre);
-		Panneau panneau = new Panneau(fenetre);
+		JFrame fenetre = new Window();
+		Menu menue = new Menu(fenetre);
+		Panel panneau = new Panel(fenetre,Palette.GREEN);
 
 		fenetre.getContentPane().add( menue, BorderLayout.EAST);
 		fenetre.getContentPane().add( panneau, BorderLayout.CENTER);
@@ -33,9 +33,9 @@ public class Fenetre extends JFrame {
 //		Thread t = new Thread(new Balle(panneau));
 //		t.start();
 
-		fenetre.setVisible(true);
 		panneau.requestFocus();
 		panneau.setFocusable(true);
+		fenetre.setVisible(true);
 
 	}
 
