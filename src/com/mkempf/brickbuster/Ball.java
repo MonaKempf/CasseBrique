@@ -3,50 +3,92 @@ package com.mkempf.brickbuster;
 import javax.swing.JPanel;
 
 public class Ball {
-	Position positionBalle = new Position(Window.WEIGHT/2, Window.HEIGHT - 80);
-	private int x;
-	private int y;
-	private int[] vecteurDirection = new int[2];
+	Position p = new Position(Window.WIDTH/2, Window.HEIGHT - 80);
 	private JPanel jp;
+	private int vecteurDirectionX = 1;
+	private int vecteurDirectionY = -1;
+	private int SPEED = 4;
+	private Paddle paddle ;
 	
 	
-	public Ball(JPanel jp){
+	public Ball(JPanel jp, Paddle paddle ){
 		this.jp=jp;
-		this.x = positionBalle.getX();
-		this.y = positionBalle.getY();
-		this.vecteurDirection [0] = 0;
-		this.vecteurDirection [1] = 2;
-//		run();
+		this.paddle = paddle;
+	}
+	
+	public Position getP() {
+		return p;
 	}
 	
 	
-	public int getPositionBalleX(){
-		return x;
-	}
+
 	
-	public int getPositionBalleY(){
-		return y;
-	}
+	public void moveBall(){
+		System.out.println();
+		//if(p.getX()< Panel.WIDTH && p.getY() < Panel.HEIGHT 
+			//	&& p.getX()> 0 && p.getY() > 0){
+			if (p.getX() >= Panel.WIDTH - Panel.DIAMETER_BALLE
+					&& vecteurDirectionX == 1 
+					&& vecteurDirectionY == -1 ){
+				vecteurDirectionX = -1;
+				vecteurDirectionY = -1;
+			}
+			if (p.getX() >= Panel.WIDTH - Panel.DIAMETER_BALLE
+					&& vecteurDirectionX == 1 
+					&& vecteurDirectionY == 1 ){
+				vecteurDirectionX = -1;
+				vecteurDirectionY = 1;
+			}
+			if(p.getX() <= 0 + Panel.DIAMETER_BALLE
+					&& vecteurDirectionX == -1 
+					&& vecteurDirectionY == 1 ){
+				vecteurDirectionX = 1;
+				vecteurDirectionY = 1;
+			}
+			if(p.getX() <= 0 + Panel.DIAMETER_BALLE
+					&& vecteurDirectionX == -1
+					&& vecteurDirectionY == -1){
+				vecteurDirectionX = 1;
+				vecteurDirectionY = -1;
+			}
+			if(p.getY() <= 0 + Panel.DIAMETER_BALLE
+					&& vecteurDirectionX == -1
+					&& vecteurDirectionY == -1){
+				vecteurDirectionX = -1;
+				vecteurDirectionY = 1;
+			}
+			if(p.getY() <= 0 + Panel.DIAMETER_BALLE
+					&& vecteurDirectionX == 1
+					&& vecteurDirectionY == -1){
+				vecteurDirectionX = 1;
+				vecteurDirectionY = 1;
+			}
+			
+			if (p.getY() >= Panel.HEIGHT - Panel.HEIGHT_PADDEL - Panel.DIAMETER_BALLE
+					&& (p.getX() >= paddle.p.getX() - 2 && p.getX() <= paddle.p.getX() + Panel.WIDTH_PADDEL + 2)
+					&& vecteurDirectionX == 1
+					&& vecteurDirectionY == 1){
+				vecteurDirectionX = 1;
+				vecteurDirectionY = -1;
+			}			
+		
+			if (p.getY() == Panel.HEIGHT - Panel.HEIGHT_PADDEL - Panel.DIAMETER_BALLE
+					&& ( p.getX() >= paddle.p.getX() - 2 && p.getX() <= paddle.p.getX() + Panel.WIDTH_PADDEL + 2)
+					&& vecteurDirectionX == -1
+					&& vecteurDirectionY == 1){
+				vecteurDirectionX = -1;
+				vecteurDirectionY = -1;
+			}	
+			if (p.getY() > Panel.HEIGHT - Panel.HEIGHT_PADDEL - Panel.DIAMETER_BALLE ){
+				jp.setVisible(false);
+			}
+			
+		p.setX(p.getX()+ vecteurDirectionX * SPEED);
+		p.setY(p.getY()+ vecteurDirectionY * SPEED);
 	
-	
-	public void setPositionBalleX(int x){
 		jp.repaint();
-		this.x = x;
 	}
 	
-	public void setPositionBalleY(int y){
-		jp.repaint();
-		this.y = y;
-	}
-//	
-//	public void run(){
-//		while(x< Fenetre.WEIGHT && y< Fenetre.HEIGHT-100 ){
-//			setPositionBalleX(x+ vecteurDirection[0]);
-//			setPositionBalleY(y+ vecteurDirection[1]);
-//			System.out.println(y);
-//		}
-//	}
-//	
 	
 
 }

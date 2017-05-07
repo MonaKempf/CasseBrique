@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 public class Paddle implements KeyListener {
-	Position p = new Position(Window.WEIGHT/2, Window.HEIGHT - 60);
+	Position p = new Position(Window.WIDTH/2, Window.HEIGHT - Panel.HEIGHT_PADDEL);
 	private JPanel jp;
 	
 	
@@ -29,7 +29,7 @@ public class Paddle implements KeyListener {
 			p.setX(p.getX()-10);
 					}
 		else{
-			if(p.getX() <= Window.WEIGHT && e.getKeyCode() == KeyEvent.VK_RIGHT){
+			if(p.getX() <= Window.WIDTH && e.getKeyCode() == KeyEvent.VK_RIGHT){
 					p.setX(p.getX()+10);
 			}
 		}
