@@ -29,7 +29,7 @@ public class Panel extends JPanel {
 	private Palette palette;
 	private GameLoop gameLoop;
 	private Timer t;
-	private List<Brick> bricks;
+	public List<Brick> bricks;
 	
 	
 	
@@ -37,12 +37,12 @@ public class Panel extends JPanel {
 		this.paddle = new Paddle(this);
 		this.ball = new Ball(this, paddle);
 		this.palette = palette;
-		this.gameLoop = new GameLoop(ball);
 		this.t = new Timer();
-		t.scheduleAtFixedRate(gameLoop,0,1000/FPS);
 		this.addKeyListener(this.paddle);
 		this.setSize(WIDTH,HEIGHT);
-		bricks = createBricks();
+		this.bricks = createBricks();
+		this.gameLoop = new GameLoop(ball, bricks);
+		t.scheduleAtFixedRate(gameLoop,0,1000/FPS);
 
 	}
 	
@@ -74,5 +74,6 @@ public class Panel extends JPanel {
 		}
 		return bricks;
 	}
+	
 
 }

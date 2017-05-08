@@ -1,19 +1,24 @@
 package com.mkempf.brickbuster;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TimerTask;
 
 public class GameLoop extends TimerTask {
 	
-	public Ball b;
+	public Ball ball;
+	public List<Brick> bricks;
 	
-	public GameLoop(Ball b){
-		this.b = b;
+	public GameLoop(Ball ball, List<Brick> bricks){
+		this.ball = ball;
+		this.bricks = bricks;
 	}
 	
 	
 	@Override
 	public void run() {
-		b.moveBall();	
+		ball.moveBall();
+		ball.destroyBricks(ball.getP(), bricks);
 	}
 
 }
